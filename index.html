@@ -14,21 +14,31 @@
         <h2>Sabemos o quanto é difícil encontrar um estágio</h2>
         <h1>Empresa: </h1>
         <h2>Entendemos as dificuldades em encontrar um estágiario adequado para sua empresa</h2>
-
         <h1>Nos ajudamos você empresa e estudante a se conectar</h1>
         <h1>Cadastre-se</h1>
-        <form id="cadastro1" action="cadastro.php" method="POST">
-            <input type="text" name="nome" value="Nome">
-            <input type="text" name="sobrenome" value="sobrenome">
-            <input type="email" name="email" value="E-mail">
-            <input type="password" name="senha" value="Senha">
-            <input type="radio" name="tipo" value="empresa" checked>Empresa
-            <input type="radio" name="tipo" value="estudante" >Estudante
-            <input type="button" onclick="envia('cadastro1');" value="Enviar">
+
+
+        <form id="form" onsubmit="negociacaoController.adiciona(event)" >
+            <input id="nomeE" type="text" name="nome" value="Nome">
+
+            <button type="submit"> Incluir </button>
 
         </form>
     </div>
 
+
+    <!-- Controller-->
+    
+    <script src="app/controllers/NegociacaoController.js"> </script>
+
+    <!--AJAX do google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        //Como instaciei o controller ele fica acessível na página inteira
+        let negociacaoController = new NegociacaoController(); 
+        alert(",cmiwuehucbhuwens");
+    </script>
 
 
     <!-- Optional JavaScript -->
