@@ -10,5 +10,5 @@ Esse trabalho consiste basicamente desenvolver um site para auxiliar empresas e 
 - Javascript
 
 <strong>Desenvolvido por :</strong>
--Denis Luciano
--Lucas Peres
+- Denis Luciano
+- Lucas Peres
