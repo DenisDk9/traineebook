@@ -16,35 +16,36 @@
         <h2>Entendemos as dificuldades em encontrar um estágiario adequado para sua empresa</h2>
         <h1>Nos ajudamos você empresa e estudante a se conectar</h1>
         <h1>Cadastre-se</h1>
-
-
-        <form id="form" onsubmit="negociacaoController.adiciona(event)" >
-            <input id="nomeE" type="text" name="nome" value="Nome">
-
-            <button type="submit"> Incluir </button>
-
-        </form>
     </div>
 
+    <form id="simples-formulario-ajax">
+        <fieldset>
+            <input type="text" id="nome" placeholder="Nome" />
+            <br />
+            <input type="text" id="email" placeholder="Email" />
+            <br />
+            <input type="password" id="senha" placeholder="Senha" />
+            <br />
+            <input type="password" id="senha-confirmar" placeholder="Confirmar senha" />
+            <br />
+            <br />
+            <input type="submit" id="enviar" placeholder="Enviar" />
+            
+            <input type="hidden" id="metodo" value="formulario-ajax" />
+        </fieldset>
+    </form>
 
-    <!-- Controller-->
+
+
+
+
+
     
-    <script src="app/controllers/NegociacaoController.js"> </script>
-
-    <!--AJAX do google-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script>
-        //Como instaciei o controller ele fica acessível na página inteira
-        let negociacaoController = new NegociacaoController(); 
-        alert(",cmiwuehucbhuwens");
-    </script>
+	<!-- JAVASCRIPT -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="formulario.js"></script>
+    <!-- JAVASCRIPT -->
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
