@@ -48,42 +48,28 @@
 
     <div class="container" >
         <div class="row justify-content-md-center">
-            <form id="simples-formulario-ajax" onsubmit="negociacaoController.adiciona(event)">
+            <form action="cadastra.php" method="POST">
                 <fieldset>
-                    <input type="text" id="nome" placeholder="Nome" />
+                    <input type="text" name="name" placeholder="Nome" />
                     <br />
-                    <input type="text" id="email" placeholder="Email" />
+                    <input type="text" name="email" placeholder="Email" />
                     <br />
-                    <input type="password" id="senha" placeholder="Senha" />
+                    <input type="password" name="senha" placeholder="Senha" />
                     <br />
-                    <input type="password" id="senha-confirmar" placeholder="Confirmar senha" />
+                    <input type="password" name="senha-confirmar" placeholder="Confirmar senha" />
                     <br>
-                    <input type="radio" name="tipo_cadastro" value="estudante" checked /> Estudante
-                    <input type="radio" name="tipo_cadastro" value="empresa" /> Empresa
+                    <input type="radio" name="tipo-cadastro" value="estudante" checked /> Estudante
+                    <input type="radio" name="tipo-cadastro" value="empresa" /> Empresa
                     <br />
                     <br />
-                    <input type="submit" id="enviar" placeholder="Enviar" />
+                    <input type="submit" name="cadastro"   placeholder="Enviar" />
                     
-                    <input type="hidden" id="metodo" value="formulario-ajax" />
                 </fieldset>
             </form>
         </div>
     </div>
 
 
-    <!-- Controller-->
-    
-    <script src="app/controllers/NegociacaoController.js"> </script>
-    <script src="app/models/Negociacao.js"> </script>
-
-    <!--AJAX do google-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-    <script>
-        //Como instaciei o controller ele fica acessível na página inteira
-        let negociacaoController = new NegociacaoController(); 
-        //alert("instanciamos uma negociacao");
-    </script>
 
 
 </body>

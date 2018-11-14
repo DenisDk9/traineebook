@@ -1,16 +1,16 @@
 <?php
 
-function exibe($obj) {
-    echo("<pre>\n");
-    print_r($obj);
-    echo("</pre>\n");
-}
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "traineebookdb";
 
-$con = @new mysqli('localhost', 'root', '', 'traineebookdb');
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname);
 
-if ($con->connect_error) {
-    echo "Erro:" . $con->connect_error;
-    exit();
-}
-
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
 ?>
