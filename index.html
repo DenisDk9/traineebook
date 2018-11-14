@@ -9,47 +9,40 @@
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-
     <title>Traineebook</title>
-   </head>
-<body class="p-3 mb-2 bg-light text-dark">
 
+</head>
+<body>
 
-        <nav class="navbar navbar-light" style="background-color: #570CAC;">
-                <!-- Navbar content -->
-        </nav>
-
-
-
-    <div class="container">
+    <div class="container-fluid ">
         <div class="row">
-            <div class="col-sm-5 p-3 mb-2 bg-success text-white" >
+            <div class="col">
+
+                <img class="rrt" src="images/rrt.png">
                 <h1>Estudante: </h1>
                 <h2>Sabemos o quanto é difícil encontrar um estágio</h2>    
-            </div>
-            <div class="col-sm-2">
-                <!--**-->
-            </div>
             
-            <div class="col-sm-5 p-3 mb-2 bg-success text-white" >
                 <h1>Empresa: </h1>
                 <h2>Entendemos as dificuldades em encontrar um estágiario adequado para sua empresa</h2>
+
             </div>
-        <div>
-    </div>
 
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <h3>Nos ajudamos você empresa e estudante a se conectarem</h3>
-            <br>
-            <h4>Cadastre-se:</h4>
-        </div>
-    </div>
+            <div class="col">
 
-    <div class="container" >
-        <div class="row justify-content-md-center">
-            <form action="cadastra.php" method="POST">
-                <fieldset>
+                <!--Formulario de login-->
+                <form action="login.php" method="POST">
+                    <input type="text" name="email" placeholder="email" /> 
+                    <br/>
+                    <input type="password" name="senha" placeholder="Senha" />
+                    <br/>
+                    <input type="submit" name="login"  value="Entrar" placeholder="Entrar" />
+                </form>
+
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+                <!--Formulario de cadastro-->
+                <form action="cadastra.php" method="POST">
+                    
                     <input type="text" name="name" placeholder="Nome" />
                     <br />
                     <input type="text" name="email" placeholder="Email" />
@@ -62,14 +55,11 @@
                     <input type="radio" name="tipo-cadastro" value="empresa" /> Empresa
                     <br />
                     <br />
-                    <input type="submit" name="cadastro"   placeholder="Enviar" />
-                    
-                </fieldset>
-            </form>
+                    <input type="submit" name="cadastro" value="Cadastrar"  placeholder="Enviar" />
+                </form>
+            </div>
         </div>
     </div>
-
-
 
 
 </body>
