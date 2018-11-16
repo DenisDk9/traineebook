@@ -14,24 +14,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	echo $email;
 	echo $senha;
-
-
 	echo("<br><br><br><br>");
 
-	if($tipo == "estudante"){
-		//$sql = " INSERT INTO aluno (nome,email, senha) 
-		//VALUES ($name,$email,$senha)";
+	$sql = "SELECT * FROM aluno  WHERE email = '$email' and senha = '$senha'";
 
-		$sql = " INSERT INTO aluno (nome,email,senha) 
-		VALUES ('$name','$email','$senha')";
-
-		if ($conn->query($sql) === TRUE) {
-			echo "New record created successfully";
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}	
-	}
+	//lembrar que mysql_.. foi descontinuada, agora é mysqli
+	$result = mysqli_query($conn,$sql);
 	
+
+	if (!$result) {
+		echo "Erro do banco de dados, não foi possível consultar o banco de dados\n";
+		echo 'Erro MySQL: ' . mysqli_error();
+		exit;
+	}else{
+		echo("Sucessfull query database");
+	}
+
+	//para saber se é sucesso a consulta no banco dados
+	//verificaremos o numero de linhas
+	$row = mysqli_num_rows($result);
+
+	if($row < 1){
+		echo "<script>alert('Email ou senha invalida')</script>";
+		echo "<script>loginfailed()</script>";
+		exit;
+	}
+
 
 }
 
