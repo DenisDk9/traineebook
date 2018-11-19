@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		//$sql = " INSERT INTO aluno (nome,email, senha) 
 		//VALUES ($name,$email,$senha)";
 
-		$sql = " INSERT INTO aluno (nome,email,senha) 
-		VALUES ('$name','$email','$senha')";
+		$sql = " INSERT INTO aluno (nome,email,senha,emai_verificado) 
+		VALUES ('$name','$email','$senha',0)";
 
 		if ($conn->query($sql) === TRUE) {
 			echo "New record created successfully";

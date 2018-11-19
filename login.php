@@ -38,6 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "<script>alert('Email ou senha invalida')</script>";
 		echo "<script>loginfailed()</script>";
 		exit;
+	}else{
+		echo "<script>alert('Login realizado com sucesso')</script>";
+		//Verificar se o perfil está verificado, pra ver se manda para adddados ou home
+		
 	}
 
 
