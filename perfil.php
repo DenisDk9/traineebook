@@ -28,7 +28,7 @@ $tipo = $_SESSION['tipo'];
 
 <body>
 
-        <div  class="barra_cima" style="border-bottom: 1px solid black;">
+    <div  class="barra_cima" style="border-bottom: 1px solid black;">
             <div class= "content">
                 <form >
                      <input type="text" placeholder="Buscar estágio"  style="border: 1px solid black;
@@ -41,57 +41,23 @@ $tipo = $_SESSION['tipo'];
                 </div>
              </div>
         </div>
- <?php if($tipo == "Empresa"){ ?>
-        <div class="publicar" style= "position: absolute;
-    left: 20%;
-     margin-top: 7.5%;
-      width: 40%;
-       min-height: 20%;
+
+    <div class = "barra_perfil1" style = "position: absolute;
+    left:0%;
+     margin-top: 5%;
+      width: 100%;
+       min-height: 35%;
         background-color: #FFFFFF;
-        border-radius: 15px;
-         border-left: 2px solid #404040;
-          border-right: 2px solid #404040;
-     border-bottom: 2px solid #404040;
-     border-top: 2px solid #404040;" >
-
-
- </div> <?php } ?>
-
-    
-
-        <div class="publicacoes" style= "position: absolute;
-    left: 20%;
-     margin-top: 20%;
-      width: 40%;
-       min-height: 50%;
-        background-color: #FFFFFF;
-        border-radius: 15px;
-         border-left: 2px solid #404040;
-          border-right: 2px solid #404040;
-     border-bottom: 2px solid #404040;
-     border-top: 2px solid #404040;" >
-            
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+         
+     border: 2px solid #404040;
+       " >
+        <div class = "foto" style =" position: absolute; left:10%; margin-top:2.5%; width:15%; height:70%; background-color: #D3D3D3;
+        border: 2px solid #404040; border-radius 15px;">
 
         </div>
 
-      <div class="pendentes" style= "position: absolute;
-    right: 10%;
-     margin-top: 7.5%;
-      width: 20%;
-       min-height: 70%;
-        background-color: #FFFFFF;
-        border-radius: 15px;
-         border-left: 2px solid #404040;
-          border-right: 2px solid #404040;
-     border-bottom: 2px solid #404040;
-     border-top: 2px solid #404040;" >
-            
-
-        </div>
-        
-
-    
-
-
+    </div>
 
 </body>

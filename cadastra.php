@@ -27,14 +27,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		//$sql = " INSERT INTO aluno (nome,email, senha) 
 		//VALUES ($name,$email,$senha)";
 
-		$sql = " INSERT INTO aluno (nome,email,senha,emai_verificado) 
-		VALUES ('$name','$email','$senha',0)";
+		$sql = " INSERT INTO aluno (nome,email,senha) 
+		VALUES ('$name','$email','$senha')";
 
 		if ($conn->query($sql) === TRUE) {
 			echo "New record created successfully";
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}	
+	}
+	else {
+		$sql = " INSERT INTO empresa (nome,email,senha) 
+		VALUES ('$name','$email','$senha')";
+
+		if ($conn->query($sql) === TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}	
+
+
 	}
 	
 

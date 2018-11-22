@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //Incluindo a conexao com o banco de dados
 include_once "conexao.php";
 
@@ -17,17 +17,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	echo("<br><br><br><br>");
 
 	$sql = "SELECT * FROM aluno  WHERE email = '$email' and senha = '$senha'";
+	$sql2 =  "SELECT * FROM empresa  WHERE email = '$email' and senha = '$senha'";
 
 	//lembrar que mysql_.. foi descontinuada, agora é mysqli
 	$result = mysqli_query($conn,$sql);
+	$result2= mysqli_query($conn,$sql2);
 	
 
-	if (!$result) {
-		echo "Erro do banco de dados, não foi possível consultar o banco de dados\n";
-		echo 'Erro MySQL: ' . mysqli_error();
-		exit;
+	if ($result2) {
+		echo("Sucessfull query database");
+		$_SESSION["user"]=$email;
+		$nome=$result2->fetch_array();
+		$_SESSION["nome"]=$nome["nome"];
+		$_SESSION["tipo"]= "Empresa";
+		header("location: home.php");
 	}else{
 		echo("Sucessfull query database");
+		$_SESSION["user"]=$email;
+		$nome=$result->fetch_array();
+		$_SESSION["nome"]=$nome["nome"];
+		$_SESSION["tipo"]="Estudante";
+		header("location: home.php");
 	}
 
 	//para saber se é sucesso a consulta no banco dados
@@ -38,10 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "<script>alert('Email ou senha invalida')</script>";
 		echo "<script>loginfailed()</script>";
 		exit;
-	}else{
-		echo "<script>alert('Login realizado com sucesso')</script>";
-		//Verificar se o perfil está verificado, pra ver se manda para adddados ou home
-		
 	}
 
 
@@ -52,5 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	echo "METODO GET";
 }
+
 
 ?>
