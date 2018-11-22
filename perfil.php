@@ -22,6 +22,40 @@ $tipo = $_SESSION['tipo'];
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <title>Traineebook</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #EEEEEE;
+            border: 2px solid #404040;
+            border-radius:15px;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+        li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            
+        }
+        
+       
+        li a:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 
 </head>
 
@@ -57,7 +91,38 @@ $tipo = $_SESSION['tipo'];
         border: 2px solid #404040; border-radius 15px;">
 
         </div>
+        <h2 style= "position:absolute; left:26%; top:60%; "> <?php echo "$nome[0]<br><h5 style= 'position:absolute; left:26%; top:75%; '>$tipo</h5>"; ?> </h2>
+    </div>
+
+    <div class = "barra_perfil2" style="position: absolute;
+    left:10%;
+     margin-top: 25%;
+      width: 60%;
+       min-height: 35%;
+        background-color: #FFFFFF;
+        border-radius: 15px;
+        
+         
+     border: 2px solid #404040; ">
+
+        <ul style="list-style-type: none;
+            margin: 0;
+            padding: 0;">
+            <li><a href="perfil.php?secao=resumo">Resumo</a></li>
+            <li><a href="perfil.php?secao=historico">Histórico</a></li>
+            <li><a href="perfil.php?secao=formacao">Formação Acadêmica</a></li>
+            <li><a href="perfil.php?secao=projetos">Projetos Realizados</a></li>
+            <li><a href="perfil.php?secao=informacoes">Informações pessoais</a></li>
+        </ul>
+
+        
+
 
     </div>
 
+
+
+
 </body>
+
+
