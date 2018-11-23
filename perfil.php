@@ -1,9 +1,34 @@
 <?php
 
 session_start();
+include_once "conexao.php";
 //var_dump($_SESSION['nome']);
 $nome= explode(" ",$_SESSION['nome']);
 $tipo = $_SESSION['tipo'];
+if(isset($_GET["secao"]));
+    $secao=$_GET["secao"];
+$email=$_SESSION["user"];
+
+if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
+    
+    $novasenha=$_POST["senha"];
+    $sql3="UPDATE empresa SET senha= '$novasenha'  WHERE email ='$email'  ";
+    $resultado= mysqli_query($conn,$sql3);
+
+}
+
+$sql2 =  "SELECT * FROM empresa  WHERE email = '$email'";
+//var_dump($sql);
+$result2= mysqli_query($conn,$sql2);
+$result= $result2->fetch_array();
+
+
+$senha=$result["senha"];
+$telefone=$result["telefone"];
+ 
+
+
+
 
 
 ?>
@@ -114,8 +139,33 @@ $tipo = $_SESSION['tipo'];
             <li><a href="perfil.php?secao=projetos">Projetos Realizados</a></li>
             <li><a href="perfil.php?secao=informacoes">Informações pessoais</a></li>
         </ul>
+    <?php if($secao=="informacoes"){
+           echo '<form action="perfil.php?secao=informacoes" " method="post" >
+           <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+             <div class="col-sm-10">
+               <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$email.'">
+             </div>
+           </div>
+           <div class="form-group row">
+             <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
+             <div class="col-sm-10">
+               <input type="text" class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
+             </div>
+             
+           </div>
+           <button type="submit" name="botao" value="informacoes" class="btn btn-primary mb-2">Atualizar informações</button>
+         </form>';
 
-        
+        }
+        else if($secao=="resumo"){
+
+            
+
+
+        }
+
+    ?>        
 
 
     </div>
