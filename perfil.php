@@ -4,20 +4,38 @@ session_start();
 include_once "conexao.php";
 //var_dump($_SESSION['nome']);
 $nome= explode(" ",$_SESSION['nome']);
+
 $tipo = $_SESSION['tipo'];
 if(isset($_GET["secao"]));
     $secao=$_GET["secao"];
 $email=$_SESSION["user"];
 
+
+
+
 if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
     
     $novasenha=$_POST["senha"];
-    $sql3="UPDATE empresa SET senha= '$novasenha'  WHERE email ='$email'  ";
-    $resultado= mysqli_query($conn,$sql3);
+    $novotelefone=$_POST["telefone"];
+    if($tipo=="aluno"){ 
+        
+        $novocurso=$_POST["curso"];
+        $novauniversidade=$_POST["universidade"];
+        $novocpf=$_POST["cpf"];
+        //echo "$novocurso $novocpf $novauniversidade";
+        
+        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , curso= '$novocurso' , universidade='$novauniversidade' , cpf='$novocpf'  WHERE email ='$email'  ";
+
+    }
+    else
+        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone'  WHERE email ='$email'  ";
+        //$sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , curso='$novocurso' , universidade='$novauniversidade' , cpf='$novocpf'  WHERE email ='$email'  ";
+
+        $resultado= mysqli_query($conn,$sql3);
 
 }
 
-$sql2 =  "SELECT * FROM empresa  WHERE email = '$email'";
+$sql2 =  "SELECT * FROM $tipo  WHERE email = '$email'";
 //var_dump($sql);
 $result2= mysqli_query($conn,$sql2);
 $result= $result2->fetch_array();
@@ -25,6 +43,13 @@ $result= $result2->fetch_array();
 
 $senha=$result["senha"];
 $telefone=$result["telefone"];
+
+if($tipo=="aluno"){
+
+    $curso=$result["curso"];
+    $universidade=$result["universidade"];
+    $cpf=$result["cpf"];
+}
  
 
 
@@ -135,11 +160,15 @@ $telefone=$result["telefone"];
             padding: 0;">
             <li><a href="perfil.php?secao=resumo">Resumo</a></li>
             <li><a href="perfil.php?secao=historico">Histórico</a></li>
+
+            <?php if($tipo=="aluno") { ?>
             <li><a href="perfil.php?secao=formacao">Formação Acadêmica</a></li>
             <li><a href="perfil.php?secao=projetos">Projetos Realizados</a></li>
+            <?php } ?>
             <li><a href="perfil.php?secao=informacoes">Informações pessoais</a></li>
+            
         </ul>
-    <?php if($secao=="informacoes"){
+    <?php if($secao=="informacoes" && $tipo=="empresa"){
            echo '<form action="perfil.php?secao=informacoes" " method="post" >
            <div class="form-group row">
              <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
@@ -154,10 +183,64 @@ $telefone=$result["telefone"];
              </div>
              
            </div>
+           <div class="form-group row">
+             <label for="inputPassword" class="col-sm-2 col-form-label">Telefone</label>
+             <div class="col-sm-10">
+               <input type="text" class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
+             </div>
+             
+           </div>
            <button type="submit" name="botao" value="informacoes" class="btn btn-primary mb-2">Atualizar informações</button>
          </form>';
 
         }
+        if($secao=="informacoes" && $tipo=="aluno"){
+            echo '<form action="perfil.php?secao=informacoes" " method="post" >
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$email.'">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label for="inputTelefone" class="col-sm-2 col-form-label">Telefone</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label for="inputUniversidade" class="col-sm-2 col-form-label">Universidade</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name = "universidade" id="inputUniversidade" placeholder="Universidade" value="'.$universidade.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label for="inputCurso" class="col-sm-2 col-form-label">Curso</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name = "curso" id="inputCurso" placeholder="Curso" value="'.$curso.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+              <label for="inputCPF" class="col-sm-2 col-form-label">CPF</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name = "cpf" id="inputCPF" placeholder="CPF" value="'.$cpf.'">
+              </div>
+              
+            </div>
+            <button type="submit" name="botao" value="informacoes" class="btn btn-primary mb-2">Atualizar informações</button>
+          </form>';
+ 
+         }
         else if($secao=="resumo"){
 
             echo '<form  >
@@ -168,12 +251,36 @@ $telefone=$result["telefone"];
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Telefone: </label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$telefone.'">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
                     <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$email.'">
                     </div>
                 </div>
              </form>';
+             if($tipo=="aluno"){
+
+                echo '<form  >
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Universidade: </label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$universidade.'">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Curso: </label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$curso.'">
+                    </div>
+                </div>
+             </form>';
+             }
 
 
         }

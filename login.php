@@ -22,21 +22,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//lembrar que mysql_.. foi descontinuada, agora é mysqli
 	$result = mysqli_query($conn,$sql);
 	$result2= mysqli_query($conn,$sql2);
+	$nome=$result2->fetch_array();
 	
 
-	if ($result2) {
+	if (isset($nome["nome"])) {
 		echo("Sucessfull query database");
 		$_SESSION["user"]=$email;
-		$nome=$result2->fetch_array();
+		
 		$_SESSION["nome"]=$nome["nome"];
-		$_SESSION["tipo"]= "Empresa";
+		$_SESSION["tipo"]= "empresa";
 		header("location: home.php");
 	}else{
-		echo("Sucessfull query database");
+		echo("Sucessfull query database2");
 		$_SESSION["user"]=$email;
 		$nome=$result->fetch_array();
 		$_SESSION["nome"]=$nome["nome"];
-		$_SESSION["tipo"]="Estudante";
+		$_SESSION["tipo"]="aluno";
 		header("location: home.php");
 	}
 
