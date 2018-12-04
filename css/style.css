@@ -22,6 +22,7 @@
     width: 100%;
     height:10%;
     background-color:#c6c6c6;
+    border-bottom: 1px solid black;
     
     
 }
@@ -42,23 +43,76 @@
 .publicacoes{
 
     position: absolute;
-    right: 30%;
-     margin-bottom: 5%;
-      width: 40%;
-       height: 50%;
-        background-color: #FFFFFF;
-        border-radius: 15px;
-         border-left: 2px solid #404040;
-          border-right: 2px solid #404040;
-     border-bottom: 2px solid #404040;
-
-
-  }
+    left: 20%;
+    margin-top: 32%;
+    width: 40%;
+    min-height: 50%;
+    height:auto;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-top: 2px solid #404040;
+}
   
 
 
 body{
 
     background-color: #cce2ff;
+
+}
+#form_pesquisa{
+    border: 1px solid black;
+    border-radius:20px; 
+    width:30%; 
+    height:10%;  
+    min-width:499px; 
+    min-height:40px;
+    box-sizing: border-box; 
+    float:left;
+    margin-left:20%;
+    margin-top:1.5%; 
+    padding:0.75%; 
+    line-height:0.75%;
+}
+.usuario{
+    position:absolute; 
+    right:20%; 
+    margin-top:1%; 
+    width: 10%; 
+    height:7.5%; 
+    background-color:#FFFFFF;
+    border-radius:15px; 
+    border-left:2px solid #404040; 
+    border-right:2px solid #404040; 
+    border-bottom:2px solid #404040;
+}
+.publicar{
+    position: absolute;
+    left: 20%;
+    margin-top: 7.5%;
+    width: 40%;
+    min-height: 20%;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-top: 2px solid #404040;
+}
+.pendentes{
+    position: absolute;
+    right: 5%;
+    margin-top: 7.5%;
+    width: 30%;
+    min-height: 70%;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-top: 2px solid #404040;
 
 }
