@@ -8,7 +8,7 @@ include_once "conexao.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	echo "METODO POST";
 	//testando javascript dentro php
-	echo ("<script>alert('teste');</script>");
+	
 
 	$name = $_POST["name"];
 	$email =$_POST["email"];
@@ -57,5 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	echo "METODO GET";
 }
-
+header("location: index.php");
 ?>

@@ -26,6 +26,12 @@ if($tipo=="aluno"){
     $universidade=$resultado["universidade"];
 }
 
+$estado=$resultado["estado"];
+$cidade= $resultado["cidade"];
+$numero=$resultado["numero"];
+$bairro=$resultado["bairro"];
+$rua=$resultado["rua"];
+
 ?>
 
 
@@ -85,14 +91,15 @@ if($tipo=="aluno"){
 
     <div  class="barra_cima" style="border-bottom: 1px solid black;">
             <div class= "content">
-                <form >
-                     <input type="text" placeholder="Buscar estágio"  style="border: 1px solid black;
+                <form method="post" action="pesquisar.php">
+                     <input type="text" name="estagio" placeholder="Buscar estágio"  style="border: 1px solid black;
     border-radius:20px; width:30%; height:10%;  min-width:499px; min-height:40px;
      box-sizing: border-box; float:left; margin-left:20%;margin-top:1.5%; padding:0.75%; line-height:0.75%; " >
                 </form>
                 <div class="usuario" style=" position:absolute; right:20%; margin-top:1%; width: 10%; height:7.5%; background-color:#FFFFFF;border-radius:15px; border-left:2px solid #404040; border-right:2px solid #404040; border-bottom:2px solid #404040;">
                    <center style="font-size:15px;"> <?php
-                     echo "$usuario[0]<br>$tipousuario"; ?></center>
+                     echo "<a href='perfil.php?secao=informacoes'>$nome[0]</a><br>$tipo"; ?></center>
+              
                 </div>
              </div>
         </div>
@@ -178,7 +185,37 @@ if($tipo=="aluno"){
                 </div>
              </form>';
              }
-
+             $ruanumero = $rua . "  " .$numero;
+             echo '<form>
+             <div class="form-group row">
+                     <label for="staticEmail" class="col-sm-2 col-form-label">Rua: </label>
+                     <div class="col-sm-10">
+                     <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$ruanumero.'">
+               
+                     </div>
+                 </div>
+             
+             <div class="form-group row">
+                 <label for="staticEmail" class="col-sm-2 col-form-label">Bairro: </label>
+                 <div class="col-sm-10">
+                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$bairro.'">
+                 </div>
+             </div>
+ 
+             <div class="form-group row">
+                     <label for="staticEmail" class="col-sm-2 col-form-label">Cidade: </label>
+                     <div class="col-sm-10">
+                     <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$cidade.'">
+                     </div>
+             </div>
+ 
+             <div class="form-group row">
+                 <label for="staticEmail" class="col-sm-2 col-form-label">Estado: </label>
+                 <div class="col-sm-10">
+                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$estado.'">
+                 </div>
+             </div>
+             </form>';
 
         }
 

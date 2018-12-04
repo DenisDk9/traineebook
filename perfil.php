@@ -17,6 +17,12 @@ if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
     
     $novasenha=$_POST["senha"];
     $novotelefone=$_POST["telefone"];
+    $novarua=$_POST["rua"];
+    $novobairro=$_POST["bairro"];
+    $novacidade=$_POST["cidade"];
+    $novoestado=$_POST["estado"];
+    $novonumero=$_POST["numero"];
+   
     if($tipo=="aluno"){ 
         
         $novocurso=$_POST["curso"];
@@ -24,15 +30,16 @@ if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
         $novocpf=$_POST["cpf"];
         //echo "$novocurso $novocpf $novauniversidade";
         
-        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , curso= '$novocurso' , universidade='$novauniversidade' , cpf='$novocpf'  WHERE email ='$email'  ";
+        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , curso= '$novocurso' , universidade='$novauniversidade' , cpf='$novocpf', cidade='$novacidade', estado='$novoestado', bairro='$novobairro', numero='$novonumero',rua='$novarua'  WHERE email ='$email'  ";
 
     }
-    else
-        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone'  WHERE email ='$email'  ";
+    else{  
+        $sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , rua='$novarua' , numero='$novonumero' , bairro='$novobairro' , cidade ='$novacidade' , estado='$novoestado'  WHERE email ='$email'";
+        
         //$sql3="UPDATE $tipo SET senha= '$novasenha' , telefone='$novotelefone' , curso='$novocurso' , universidade='$novauniversidade' , cpf='$novocpf'  WHERE email ='$email'  ";
-
+    }
         $resultado= mysqli_query($conn,$sql3);
-
+        
 }
 
 $sql2 =  "SELECT * FROM $tipo  WHERE email = '$email'";
@@ -51,7 +58,12 @@ if($tipo=="aluno"){
     $cpf=$result["cpf"];
 }
  
+$estado=$result["estado"];
 
+$cidade= $result["cidade"];
+$numero=$result["numero"];
+$bairro=$result["bairro"];
+$rua=$result["rua"];
 
 
 
@@ -114,14 +126,15 @@ if($tipo=="aluno"){
 
     <div  class="barra_cima" style="border-bottom: 1px solid black;">
             <div class= "content">
-                <form >
-                     <input type="text" placeholder="Buscar estágio"  style="border: 1px solid black;
+                <form method="post" action="pesquisar.php" >
+                     <input type="text" name="estagio" placeholder="Buscar estágio"  style="border: 1px solid black;
     border-radius:20px; width:30%; height:10%;  min-width:499px; min-height:40px;
      box-sizing: border-box; float:left; margin-left:20%;margin-top:1.5%; padding:0.75%; line-height:0.75%; " >
                 </form>
                 <div class="usuario" style=" position:absolute; right:20%; margin-top:1%; width: 10%; height:7.5%; background-color:#FFFFFF;border-radius:15px; border-left:2px solid #404040; border-right:2px solid #404040; border-bottom:2px solid #404040;">
                    <center style="font-size:15px;"> <?php
-                     echo "$nome[0]<br>$tipo"; ?></center>
+                     echo "<a href='perfil.php?secao=informacoes'>$nome[0]</a><br>$tipo";
+                     ?></center>
                 </div>
              </div>
         </div>
@@ -149,6 +162,9 @@ if($tipo=="aluno"){
      margin-top: 25%;
       width: 60%;
        min-height: 35%;
+       float:left;
+       clear:both;
+       overflow: hidden;
         background-color: #FFFFFF;
         border-radius: 15px;
         
@@ -179,17 +195,56 @@ if($tipo=="aluno"){
            <div class="form-group row">
              <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
              <div class="col-sm-10">
-               <input type="text" class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
+               <input type="text" required class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
              </div>
              
            </div>
            <div class="form-group row">
              <label for="inputPassword" class="col-sm-2 col-form-label">Telefone</label>
              <div class="col-sm-10">
-               <input type="text" class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
+               <input type="text" required class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
              </div>
              
            </div>
+
+           <div class="form-group row">
+              <label for="inputRua" class="col-sm-2 col-form-label">Rua</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "rua" id="inputRua" placeholder="Rua" value="'.$rua.'">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputNumero" class="col-sm-2 col-form-label">Número</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "numero" id="inputNumero" placeholder="Número" value="'.$numero.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+                <label for="inputCPF" class="col-sm-2 col-form-label">Bairro</label>
+                <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "bairro" id="inputBairro" placeholder="Bairro" value="'.$bairro.'">
+                </div>  
+             </div> 
+              
+            
+            <div class="form-group row">
+              <label for="inputCidade" class="col-sm-2 col-form-label">Cidade</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "cidade" id="inputCidade" placeholder="Cidade" value="'.$cidade.'">
+              </div>
+              
+            </div>
+
+            <div class="form-group row">
+              <label for="inputEstado" class="col-sm-2 col-form-label">Estado</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "estado" id="inputCidade" placeholder="estado" value="'.$estado.'">
+              </div>
+              
+            </div>
+
            <button type="submit" name="botao" value="informacoes" class="btn btn-primary mb-2">Atualizar informações</button>
          </form>';
 
@@ -205,40 +260,82 @@ if($tipo=="aluno"){
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
+                <input type="text" required class="form-control" name = "senha" id="inputPassword" placeholder="Password" value="'.$senha.'">
               </div>
               
             </div>
             <div class="form-group row">
               <label for="inputTelefone" class="col-sm-2 col-form-label">Telefone</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
+                <input type="text" required class="form-control" name = "telefone" id="inputTelefone" placeholder="Telefone" value="'.$telefone.'">
               </div>
               
             </div>
             <div class="form-group row">
               <label for="inputUniversidade" class="col-sm-2 col-form-label">Universidade</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name = "universidade" id="inputUniversidade" placeholder="Universidade" value="'.$universidade.'">
+                <input type="text" required class="form-control" name = "universidade" id="inputUniversidade" placeholder="Universidade" value="'.$universidade.'">
               </div>
               
             </div>
             <div class="form-group row">
               <label for="inputCurso" class="col-sm-2 col-form-label">Curso</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name = "curso" id="inputCurso" placeholder="Curso" value="'.$curso.'">
+                <input type="text" required class="form-control" name = "curso" id="inputCurso" placeholder="Curso" value="'.$curso.'">
               </div>
               
             </div>
             <div class="form-group row">
               <label for="inputCPF" class="col-sm-2 col-form-label">CPF</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name = "cpf" id="inputCPF" placeholder="CPF" value="'.$cpf.'">
+                <input type="text" required class="form-control" name = "cpf" id="inputCPF" placeholder="CPF" value="'.$cpf.'">
               </div>
               
             </div>
+            <div class="form-group row">
+              <label for="inputRua" class="col-sm-2 col-form-label">Rua</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "rua" id="inputRua" placeholder="Rua" value="'.$rua.'">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="inputNumero" class="col-sm-2 col-form-label">Número</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "numero" id="inputNumero" placeholder="Número" value="'.$numero.'">
+              </div>
+              
+            </div>
+            <div class="form-group row">
+                <label for="inputCPF" class="col-sm-2 col-form-label">Bairro</label>
+                <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "bairro" id="inputBairro" placeholder="Bairro" value="'.$bairro.'">
+                </div>  
+             </div> 
+              
+            
+            <div class="form-group row">
+              <label for="inputCidade" class="col-sm-2 col-form-label">Cidade</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "cidade" id="inputCidade" placeholder="Cidade" value="'.$cidade.'">
+              </div>
+              
+            </div>
+
+            <div class="form-group row">
+              <label for="inputEstado" class="col-sm-2 col-form-label">Estado</label>
+              <div class="col-sm-10">
+                <input type="text" required class="form-control" name = "estado" id="inputCidade" placeholder="estado" value="'.$estado.'">
+              </div>
+              
+            </div>
+           
+              
+            
+            
             <button type="submit" name="botao" value="informacoes" class="btn btn-primary mb-2">Atualizar informações</button>
-          </form>';
+            
+            </form>';
  
          }
         else if($secao=="resumo"){
@@ -281,7 +378,37 @@ if($tipo=="aluno"){
                 </div>
              </form>';
              }
+            $ruanumero = $rua . "  " .$numero;
+            echo '<form>
+            <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Rua: </label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$ruanumero.'">
+              
+                    </div>
+                </div>
+            
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Bairro: </label>
+                <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$bairro.'">
+                </div>
+            </div>
 
+            <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Cidade: </label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$cidade.'">
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Estado: </label>
+                <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="'.$estado.'">
+                </div>
+            </div>
+            </form>';
 
         }
 

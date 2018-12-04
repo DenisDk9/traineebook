@@ -33,9 +33,9 @@
                 <!--Formulario de login-->
             <br>
                 <form  action="login.php" method="POST">
-                    <input type="text" name="email" placeholder="email" /> 
+                    <input type="email" required name="email" placeholder="email" /> 
                     
-                    <input type="password" name="senha" placeholder="Senha" />
+                    <input type="password" required name="senha" placeholder="Senha" />
                     
                     <input type="submit" name="login"  value="Entrar" placeholder="Entrar" />
                 </form>
@@ -48,13 +48,13 @@
                 <h3>Cadastre-se agora<h3>
                     <form action="cadastra.php" method="POST">
                         
-                        <input type="text" name="name" placeholder="Nome" size ="30"/>
+                        <input type="text" required name="name" placeholder="Nome" size ="30"/>
                         <br />
-                        <input type="text" name="email" placeholder="Email" size="30" />
+                        <input type="email" required name="email" placeholder="Email" size="30" />
                         <br />
-                        <input type="password" name="senha" placeholder="Senha" />
+                        <input type="password" required name="senha" placeholder="Senha" />
                         <br />
-                        <input type="password" name="senha-confirmar" placeholder="Confirmar senha" />
+                        <input type="password" required name="senha-confirmar" placeholder="Confirmar senha" />
                         <br>
                         <input type="radio" name="tipo-cadastro" value="estudante" checked /> Estudante
                         <input type="radio" name="tipo-cadastro" value="empresa" /> Empresa
