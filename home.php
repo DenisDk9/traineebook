@@ -141,7 +141,7 @@ $estado=$result["estado"];
      <table class="table">
           <thead class="thead-light">
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Empresa</th>
               <th scope="col">Área</th>
               <th scope="col">Descrição</th>
               <th scope="col">Requisitos</th>
