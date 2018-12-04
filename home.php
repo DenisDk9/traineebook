@@ -271,31 +271,72 @@ $estado=$result["estado"];
                 <?php if($tipo=="empresa"){ ?>
                     <th scope="col">Motivação</th>
                     <th scope="col">Candidato </th>
-                    <?php } ?>
+                    <th scope="col">Aceitar </th>
+                    <?php } else{  ?>
               
+                        <th scope="col">Empresa </th>
+                    <?php }?>
               
             </tr>
           </thead>
           <tbody>
-            <?php if($tipo=="empresa") {/*
+            <?php if($tipo=="empresa") {
                 $sql2="SELECT * from estagio where id_empresa='$id' and ativo='1'";
                 $result4=mysqli_query($conn,$sql2);
                 while($pendencias=$result4->fetch_array()){
                     $idd=$pendencias["id_estagio"];
-                        $sql="SELECT * from dados_estagio where id_estagio='$idd'"
+                        $sql="SELECT * from dados_estagio where id_estagio='$idd' and aprovado='0'";
                         $result5=mysqli_query($conn,$sql);
-                        
-                        echo '
+                        while($pendencias2=$result5->fetch_array()){ 
+                            $idaluno=$pendencias2["id_aluno"];
+                            $sql3="SELECT nome from aluno where id_aluno='$idaluno'";
+                            $result6=mysqli_query($conn,$sql3)->fetch_array();
+                            $nomealuno=$result6["nome"];
+                        echo '<tr>
+                        <form action="aceitarestagio.php" method="post">
                         <td style="max-width: 30px;">'.$pendencias["area"].'</td>
                         <td style="max-width: 30px;">'.$pendencias["requisitos"].'</td>
-                        <td style="max-width: 30px;">'.$pendencias["requisitos"].'</td>
+                        <td style="max-width: 30px;">'.$pendencias2["motivacao"].'</td>                     
+                        <td style="max-width: 30px;"><a href="perfilv.php?secao=resumo&id='.$idaluno.'&tipo=aluno">'.$nomealuno.'</a></td>
+                        <input type="hidden" name="idaluno" value='.$idaluno.'></input>
+                        <input type="hidden" name="idestagio" value='.$idd.'></input>
+                        <td style="max-width: 30px;"><input type="submit" value="Aceitar"></input></td></form>
+                        </tr>';
+                        }
+                }
+                
+                
+            }
+                else{
+                    $sql2="SELECT * from dados_estagio where id_aluno='$id' and aprovado='0'";
+                    $result4=mysqli_query($conn,$sql2);
+
+                    while($pendencias=$result4->fetch_array()){ 
+                        $idd=$pendencias["id_estagio"];
                         
-                        ';
+                        $sql="SELECT * from estagio where id_estagio='$idd' ";
+                        $result5=mysqli_query($conn,$sql);
+                        while($pendencias2=$result5->fetch_array()){
+
+                            $idempresa=$pendencias2["id_empresa"];
+                            $sql3="SELECT nome from empresa where id_empresa='$idempresa'";
+                            $result6=mysqli_query($conn,$sql3)->fetch_array();
+                            $nomeempresa2=$result6["nome"];
+
+                          echo'  <tr>
+                        <form action="aceitarestagio.php" method="post">
+                        <td style="max-width: 30px;">'.$pendencias2["area"].'</td>
+                        <td style="max-width: 30px;">'.$pendencias2["requisitos"].'</td>
+                        <td style="max-width: 30px;"><a href="perfilv.php?secao=resumo&id='.$idempresa.'&tipo=empresa">'.$nomeempresa2.'</a></td>
+                        </tr>';
+
+
+                        }
 
                 }
-                */
-                
-            }?>
+            }
+            
+            ?>
 
 
 

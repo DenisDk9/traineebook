@@ -98,7 +98,9 @@ $rua=$resultado["rua"];
                 </form>
                 <div class="usuario" style=" position:absolute; right:20%; margin-top:1%; width: 10%; height:7.5%; background-color:#FFFFFF;border-radius:15px; border-left:2px solid #404040; border-right:2px solid #404040; border-bottom:2px solid #404040;">
                    <center style="font-size:15px;"> <?php
-                     echo "<a href='perfil.php?secao=informacoes'>$nome[0]</a><br>$tipo"; ?></center>
+                   $nomee=$_SESSION["nome"];
+                   $tipoo=$_SESSION["tipo"];
+                     echo "<a href='perfil.php?secao=informacoes'>$nomee</a><br>$tipoo"; ?></center>
                
                 </div>
              </div>
