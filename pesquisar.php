@@ -28,6 +28,7 @@ $area=$_POST["estagio"];
 //var_dump($area);
 
 //
+echo($area);
 
 
 
