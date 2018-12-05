@@ -20,10 +20,12 @@
         <div class="container-fluid backgMenu">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-1">
-                    <img src="images/logo-traineebook.png" alt="logo" class="logo-traineebook" width="40" height="40" >
+                    <a href="home2.php">
+                        <img src="images/logo-traineebook.png"  alt="logo" class="logo-traineebook mt-1" width="40" height="40" >
+                    </a>
                 </div>
                 <!--Barra de pesquisa-->
-                <div class="col col-lg-4">
+                <div class="col col-lg-4 mt-1">
                     <form method="POST" action="Pesquisar2.php">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="estagio" placeholder="Buscar estágio" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -37,7 +39,8 @@
                 <div class="col col-lg-2">
                   
                 </div>
-            </div>  
+            </div>
+        </div>  
     
     </body>
 

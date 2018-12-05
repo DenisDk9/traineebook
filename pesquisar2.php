@@ -2,9 +2,11 @@
 
 session_start();
 //var_dump($_SESSION['nome']);
-$nome= explode(" ",$_SESSION['nome']);
+$nome= $_SESSION['nome'];
 $tipo = $_SESSION['tipo'];
 $email= $_SESSION["user"];
+
+
 
 include_once "conexao.php";
 
@@ -28,7 +30,7 @@ $area=$_POST["estagio"];
 //var_dump($area);
 
 //
-echo($area);
+//echo($area);
 
 ?>
 
@@ -54,10 +56,12 @@ echo($area);
         <div class="container-fluid backgMenu">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-1">
-                    <img src="images/logo-traineebook.png" alt="logo" class="logo-traineebook" width="40" height="40" >
+                    <a href="home2.php">
+                        <img src="images/logo-traineebook.png"  alt="logo" class="logo-traineebook mt-1" width="40" height="40" >
+                    </a>
                 </div>
                 <!--Barra de pesquisa-->
-                <div class="col col-lg-4">
+                <div class="col col-lg-4 mt-1">
                     <form method="POST" action="Pesquisar2.php">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="estagio" placeholder="Buscar estágio" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -112,11 +116,13 @@ echo($area);
 			  						<div class='card-header'>
 			    					$nome	
 			  						</div>
-						  			<div class='card-body'>
-						    			<h5 class='card-title'>Área: $area  </h5>
-						    			<p class='card-text'>$descricao</p>
-						    			<a href='#' class='btn btn-primary'>Candidatar</a>
-						  			</div>
+                                    <form method = 'POST' action = 'candidatar2.php'>
+    						  			<div class='card-body'>
+    						    			<h5 class='card-title'>Área: $area  </h5>
+    						    			<p class='card-text'>$descricao</p>
+    						    			<a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
+    						  			</div>
+                                    </form>
 								</div>
 			    			 ");
 						}
