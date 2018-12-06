@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Dez-2018 às 02:37
+-- Generation Time: 06-Dez-2018 às 22:43
 -- Versão do servidor: 10.1.36-MariaDB
--- versão do PHP: 7.2.11
+-- versão do PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,12 +56,12 @@ CREATE TABLE `aluno` (
 
 INSERT INTO `aluno` (`id_aluno`, `nome`, `cpf`, `curso`, `universidade`, `email`, `ano_entrada`, `ano_formatura`, `senha`, `emai_verificado`, `perfil_verificado`, `telefone`, `poder`, `id_endereco`, `rua`, `numero`, `bairro`, `cidade`, `estado`) VALUES
 (1, 'teste', NULL, NULL, NULL, 'teste2', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '', NULL, NULL, NULL, 'teste2', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '', NULL, NULL, NULL, '1@gmail.com', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'feijao', NULL, NULL, NULL, 'teste2', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'tomate', NULL, NULL, NULL, '1@gmail.com', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Denis', NULL, NULL, NULL, '1@gmail.com', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Denis Luciano Lopes', 125, 'CCP3', 'UFjf4', 'denis.lopes3012@gmail.com', NULL, NULL, '123', 0, NULL, 1245, NULL, NULL, 'Helio de souza limaaa', 142, 'santo antoniA', 'viÃ§osaa', 'mg'),
-(6, '', NULL, NULL, NULL, '', NULL, NULL, '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'teste', NULL, NULL, NULL, 'teste@teste', NULL, NULL, '123', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'batata', NULL, NULL, NULL, '', NULL, NULL, '', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Ricardo Santos', 0, 'lokewjojew', 'wq', 'teste@teste', NULL, NULL, '123', 0, NULL, 2147483647, NULL, NULL, 'dewnndio', 0, 'dcewknkn', 'dmkewnk', 'dnkewnd'),
 (8, 'estudante', 123, 'ccp', 'ufv', 'teste@teste2', NULL, NULL, '123', NULL, NULL, 123, NULL, NULL, 'Helio de souza lima', 120, 'santo antonio', 'viÃ§osa', 'mg');
 
 -- --------------------------------------------------------
@@ -90,7 +90,19 @@ INSERT INTO `dados_estagio` (`id_dados_estagio`, `motivoNaoAprovado`, `datainici
 (2, NULL, NULL, NULL, 0, 'ssss', 5, 1),
 (3, NULL, NULL, NULL, 0, 'cuuuuuuu', 5, 2),
 (4, NULL, NULL, NULL, 0, 'ciencias', 5, 2),
-(5, NULL, NULL, NULL, 0, 'pq sim', 8, 1);
+(5, NULL, NULL, NULL, 0, 'pq sim', 8, 1),
+(19, NULL, NULL, NULL, 0, 'textMotiv', 7, 5),
+(20, NULL, NULL, NULL, 0, 'textMotiv', 7, 5),
+(21, NULL, NULL, NULL, 0, 'we', 7, 5),
+(22, NULL, NULL, NULL, 0, 'we', 7, 5),
+(23, NULL, NULL, NULL, 0, 'we', 7, 5),
+(24, NULL, NULL, NULL, 0, 'Quero um ps4 pra jogar rd2', 7, 1),
+(25, NULL, NULL, NULL, 0, 'comprar um cavalo', 7, 5),
+(26, NULL, NULL, NULL, 0, 'Ganhar uns arduinos', 7, 5),
+(27, NULL, NULL, NULL, 0, 'Ganhar gtx 2080', 7, 1),
+(28, NULL, NULL, NULL, 0, 'jsaijc', 7, 1),
+(29, NULL, NULL, NULL, 0, 'jsaijc', 7, 1),
+(30, NULL, NULL, NULL, 0, 'Essa empresa da bolsa age of mithology\r\nFeliz estou por isso !', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -116,11 +128,11 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`id_empresa`, `nome`, `email`, `telefone`, `senha`, `rua`, `numero`, `estado`, `cidade`, `bairro`) VALUES
-(1, 'Teste empresa', 'empresa@empresa.com', 45345, '123', 'Helio de souza limaaaaaaafsdfds', 146, 'mg', 'q', 'santo antonibfdfds'),
-(2, 'empresa do carai', 'empresa@cu.com', 123, '123', 'ffff', 12, 'mg', 'viÃ§osa', 'santo antoniA'),
-(3, 'empresasp', 'empresa@sp.com', 45345, '123', 'Helio de souza lima', 142, 'mg', 'viÃ§osaa', 'santo antonib'),
-(4, 'empresa fodida', 'empresa2@empresa.com', 3892, '123', 'seila', 111, 'mg', 'viÃ§osa', 'santo antonio'),
-(5, 'empresa', 'empresa@empresa', NULL, '123', NULL, NULL, NULL, NULL, NULL);
+(1, 'Formata PCeCia', 'empresa@empresa.com', 45345, '123', 'Helio de souza limaaaaaaafsdfds', 146, 'mg', 'q', 'santo antonibfdfds'),
+(2, 'Empresa PAC12', 'empresa@cu.com', 123, '123', 'ffff', 12, 'mg', 'viÃ§osa', 'santo antoniA'),
+(3, 'kABUM', 'empresa@sp.com', 45345, '123', 'Helio de souza lima', 142, 'mg', 'viÃ§osaa', 'santo antonib'),
+(4, 'Microsoft', 'empresa2@empresa.com', 3892, '123', 'seila', 111, 'mg', 'viÃ§osa', 'santo antonio'),
+(5, 'Google ', 'empresa@empresa', NULL, '123', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,23 +164,24 @@ CREATE TABLE `estagio` (
   `descricao` text NOT NULL,
   `ativo` tinyint(1) DEFAULT NULL,
   `requisitos` varchar(255) DEFAULT NULL,
-  `id_empresa` int(9) NOT NULL
+  `id_empresa` int(9) NOT NULL,
+  `titulo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `estagio`
 --
 
-INSERT INTO `estagio` (`id_estagio`, `area`, `descricao`, `ativo`, `requisitos`, `id_empresa`) VALUES
-(1, 'CCP', 'cuzao', 1, 'cu', 1),
-(2, 'Ciencia do cu', 'cuzisse', 1, 'cuzao', 2),
-(3, 'aaaaa', 'teste', 1, 'teste', 2),
-(4, 'aaaaa', 'tessste', 1, 'teste', 2),
-(5, 'aaaaa', 'tesste', 1, 'testa', 3),
-(7, 'Testando', 'Testando a quebra de linha nessa porra', 1, 'testessss', 1),
-(8, 'testando mais um', 'teste testando', 1, 'tessssste', 1),
-(9, 'testa outro', 'testando outro nessa budega', 1, 'testesss', 1),
-(10, 'CCP', 'ESTÃGIO PRA FORMATAR PC DOS PROFESSORES DPI', 1, 'DOUTORADO EM HARVARD ', 5);
+INSERT INTO `estagio` (`id_estagio`, `area`, `descricao`, `ativo`, `requisitos`, `id_empresa`, `titulo`) VALUES
+(1, 'CCP', 'cuzao', 1, 'cu', 1, 'Anahlise 2'),
+(2, 'Ciencia do cu', 'cuzisse', 1, 'cuzao', 2, 'Fazer programas'),
+(3, 'aaaaa', 'teste', 1, 'teste', 2, 'Hora eh agora1'),
+(4, 'aaaaa', 'tessste', 1, 'teste', 2, 'Hora eh agora2'),
+(5, 'aaaaa', 'tesste', 1, 'testa', 3, 'Hora eh agora3'),
+(7, 'Testando', 'Testando a quebra de linha nessa porra', 1, 'testessss', 1, 'Testar instalacao Windows'),
+(8, 'testando mais um', 'teste testando', 1, 'tessssste', 1, 'Teste comida'),
+(9, 'testa outro', 'testando outro nessa budega', 1, 'testesss', 1, 'Teste do Lucas'),
+(10, 'CCP', 'ESTÃGIO PRA FORMATAR PC DOS PROFESSORES DPI', 1, 'DOUTORADO EM HARVARD ', 5, 'Formatacao paifan');
 
 -- --------------------------------------------------------
 
@@ -243,7 +256,7 @@ ALTER TABLE `aluno`
 -- AUTO_INCREMENT for table `dados_estagio`
 --
 ALTER TABLE `dados_estagio`
-  MODIFY `id_dados_estagio` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_dados_estagio` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `empresa`
