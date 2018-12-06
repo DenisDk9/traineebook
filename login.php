@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		$_SESSION["nome"]=$nome["nome"];
 		$_SESSION["tipo"]= "empresa";
-		header("location: home.php");
+		header("location: home2.php");
 	}else{
 		echo("Sucessfull query database2");
 		$_SESSION["user"]=$email;
 		$nome=$result->fetch_array();
 		$_SESSION["nome"]=$nome["nome"];
 		$_SESSION["tipo"]="aluno";
-		header("location: home.php");
+		header("location: home2.php");
 	}
 
 	//para saber se é sucesso a consulta no banco dados

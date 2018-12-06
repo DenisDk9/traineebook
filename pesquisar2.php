@@ -79,6 +79,18 @@ $area=$_POST["estagio"];
     	</div>
     	<!--fim da barra fixa menu-->
 
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-6">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                        Resultado da busca
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     	<!--Mustrar os estágios encontras ou caso não ache nenhum também mostrar-->
         <div class="container-fluid">
             <div class="row justify-content-md-center">
@@ -108,22 +120,26 @@ $area=$_POST["estagio"];
 							$nome = $registro2['nome'];
 							$area = $registro['area'];
 							$descricao = $registro['descricao'];
+                            $titulo = $registro['titulo'];
 
 
 
 							echo (" 
-			    				<div class='card'>
-			  						<div class='card-header'>
-			    					$nome	
-			  						</div>
+			    				<div class='card text-center mt-1 mb-1'>
+                                    <div class='card-header'>
+                                        EMPRESA: $nome
+                                    </div>
                                     <form method = 'POST' action = 'candidatar2.php'>
-    						  			<div class='card-body'>
-    						    			<h5 class='card-title'>Área: $area  </h5>
-    						    			<p class='card-text'>$descricao</p>
-    						    			<a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
-    						  			</div>
+                                        <div class='card-body'>
+                                            <h5 class='card-title'> $titulo </h5>
+                                            <p class='card-text'> $descricao </p>
+                                            <a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
+                                        </div>
                                     </form>
-								</div>
+                                    <div class='card-footer text-muted'>
+                                        2 days ago
+                                    </div>
+                                </div>
 			    			 ");
 						}
 			    	?>
