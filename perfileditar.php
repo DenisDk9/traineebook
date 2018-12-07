@@ -52,6 +52,10 @@ if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
 
     $resultado= mysqli_query($conn,$sql3);
 
+    if($tipo == "aluno")
+        header('location: perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'');
+    else
+    header('location: perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'');
 }
 
 

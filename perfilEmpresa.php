@@ -107,9 +107,9 @@ impact (fonte)
                 <div class="col col-lg-2 mt-3">
                     <h4><?php echo("$nome")?></h4>
                     <div class="mt-3">
-                        <?php if ($idPerfiLVer == $id) {
-                            echo ("<button class='btn btn-primary' type='submit'>Editar perfil</button>");
-                        } ?>
+                    <?php if ($idPerfiLVer == $id) { ?>
+                            <button class="btn btn-primary" type="submit" onclick='<?php echo('window.location.href="perfileditar.php"')?>'>  Editar perfil</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -180,7 +180,7 @@ impact (fonte)
             <div class="row justify-content-md-center">
                 <div class="col col-lg-6">
                     <?php 
-                    if($tipoNav == "Resumo"){
+                    if($tipoNav == "resumo"){
                         echo ("
                             <div class='card w-75'>
                                 <div class='card-body'>
