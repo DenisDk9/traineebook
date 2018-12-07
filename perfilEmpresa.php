@@ -65,7 +65,7 @@ impact (fonte)
         <div class="container-fluid backgMenu">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-1">
-                    <a href="home2.php">
+                    <a href="homeEmpresa.php">
                         <img src="images/logo-traineebook.png"  alt="logo" class="logo-traineebook mt-1" width="40" height="40" >
                     </a>
                 </div>
@@ -86,9 +86,9 @@ impact (fonte)
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
                     <div class=" nomeMenu" >
-                        <img src="images/icons8.png"  >
+                        <img src="images/icons8.png" " >
                         <?php
                         echo $nomeDiv[0];
                         ?> 
@@ -122,13 +122,13 @@ impact (fonte)
                             //echo $tipoNav; 
                             if($tipoNav == "resumo"){
                                 echo('
-                                    <a class="nav-link active" id="resumo-tab" data-toggle="tab" href="perfilEstudante.php?nav=resumo&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="home" aria-selected="true">Resumo</a>
+                                    <a class="nav-link active" id="resumo-tab" data-toggle="tab" href="perfilEmpresa.php?nav=resumo&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="home" aria-selected="true">Resumo</a>
 
                                     ');
 
                             }else{
                                 echo('
-                                    <a class="nav-link"  id="resumo-tab" data-toggle="tab" href="perfilEstudante.php?nav=resumo&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="home" aria-selected="true">Resumo</a>
+                                    <a class="nav-link"  id="resumo-tab" data-toggle="tab" href="perfilEmpresa.php?nav=resumo&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="home" aria-selected="true">Resumo</a>
 
                                 ');
                             }
@@ -138,15 +138,15 @@ impact (fonte)
                         <li class="nav-item">
                             <?php
                             //echo $tipoNav; 
-                            if($tipoNav == "historico"){
+                            if($tipoNav == "estagios"){
                                 echo('
-                                    <a class="nav-link active" id="historico-tab" data-toggle="tab" href="perfilEstudante.php?nav=historico&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Histórico</a>
+                                    <a class="nav-link active" id="estagios-tab" data-toggle="tab" href="perfilEmpresa.php?nav=historico&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Estágios</a>
 
                                     ');
 
                             }else{
                                 echo('
-                                    <a class="nav-link" id="historico-tab" data-toggle="tab" href="perfilEstudante.php?nav=historico&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Histórico</a>
+                                    <a class="nav-link" id="estagios-tab" data-toggle="tab" href="perfilEmpresa.php?nav=historico&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Estágios</a>
 
                                 ');
                             }
@@ -155,32 +155,15 @@ impact (fonte)
                         <li class="nav-item">
                             <?php
                             //echo $tipoNav; 
-                            if($tipoNav == "formacao"){
+                            if($tipoNav == "informacoes"){
                                 echo('
-                                    <a class="nav-link active" id="formacao-tab" data-toggle="tab" href="perfilEstudante.php?nav=formacao&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Formação academica</a>
+                                    <a class="nav-link active" id="informacoes-tab" data-toggle="tab" href="perfilEmpresa.php?nav=formacao&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Infomações da empresa</a>
 
                                     ');
 
                             }else{
                                 echo('
-                                    <a class="nav-link" id="formacao-tab" data-toggle="tab" href="perfilEstudante.php?nav=formacao&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Formação academica</a>
-
-                                ');
-                            }
-                            ?>
-                        </li>
-                        <li class="nav-item">
-                            <?php
-                            //echo $tipoNav; 
-                            if($tipoNav == "projetos"){
-                                echo('
-                                    <a class="nav-link active" id="projetos-tab" data-toggle="tab" href="perfilEstudante.php?nav=projetos&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Projetos realizados</a>
-
-                                    ');
-
-                            }else{
-                                echo('
-                                    <a class="nav-link" id="projetos-tab" data-toggle="tab" href="perfilEstudante.php?nav=projetos&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Projetos realizados</a>
+                                    <a class="nav-link" id="informacoes-tab" data-toggle="tab" href="perfilEmpresa.php?nav=formacao&idPerfiLVer='.$idPerfiLVer.'"'.' role="tab" aria-controls="profile" aria-selected="false">Infomações da empresa</a>
 
                                 ');
                             }
@@ -189,16 +172,15 @@ impact (fonte)
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="resumo" role="tabpanel" aria-labelledby="resumo-tab"></div>
-                        <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab"></div>
-                        <div class="tab-pane fade" id="formacao" role="tabpanel" aria-labelledby="formacao-tab"></div>
-                        <div class="tab-pane fade" id="projetos" role="tabpanel" aria-labelledby="projetos-tab"></div>
+                        <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="estagios-tab"></div>
+                        <div class="tab-pane fade" id="formacao" role="tabpanel" aria-labelledby="informacoes-tab"></div>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col col-lg-6">
                     <?php 
-                    if($tipoNav == "resumo"){
+                    if($tipoNav == "Resumo"){
                         echo ("
                             <div class='card w-75'>
                                 <div class='card-body'>
@@ -220,15 +202,12 @@ impact (fonte)
                             </div>
 
                         ");
-                    }else if ($tipoNav == "historico") {
+                    }else if ($tipoNav == "estagios") {
                         echo (" //exibe historico
 
                         ");
-                    }else if ($tipoNav == "formacao") {
-                        echo (" //exibe formacao
 
-                        ");
-                    }else if($tipoNav == "projetos"){
+                    }else if($tipoNav == "informacoes"){
                         echo (" //exibe projetos
 
                         ");

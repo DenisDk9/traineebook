@@ -59,7 +59,7 @@ impact (fonte)
         <div class="container-fluid backgMenu">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-1">
-                    <a href="home2.php">
+                    <a href="homeEmpresa.php">
                         <img src="images/logo-traineebook.png"  alt="logo" class="logo-traineebook mt-1" width="40" height="40" >
                     </a>
                 </div>
@@ -80,7 +80,7 @@ impact (fonte)
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?> 
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
                     <div class=" nomeMenu" >
                         <img src="images/icons8.png"  >
                         <?php
