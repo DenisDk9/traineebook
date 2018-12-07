@@ -202,10 +202,46 @@ impact (fonte)
                             </div>
 
                         ");
-                    }else if ($tipoNav == "estagios") {
-                        echo (" //exibe historico
+                    }else if ($tipoNav == "historico") {
+                        $sql2="SELECT * from estagio where id_empresa='$id' ";
+                        $result4=mysqli_query($conn,$sql2);
+                        while($pendencias=$result4->fetch_array()){
+                            $idd=$pendencias["id_estagio"];
+                                $sql="SELECT * from dados_estagio where id_estagio='$idd' and aprovado='1'";
+                                $result5=mysqli_query($conn,$sql);
+                                while($pendencias2=$result5->fetch_array()){ 
+                                    $titulo=$pendencias["titulo"];
+                                    $descricao=$pendencias["descricao"];
+                                    $idaluno=$pendencias2["id_aluno"];
+                                    $sql3="SELECT nome from aluno where id_aluno='$idaluno'";
+                                    $result6=mysqli_query($conn,$sql3)->fetch_array();
+                                    $nomealuno=$result6["nome"];
+                                
+                                    echo ("
+                                    <div class='card text-center mt-1 mb-1'>
+                                        <div class='card-header'>
+                                            Aluno: $nomealuno
+                                        </div>
+                                        <form method = 'POST' action = 'candidatar2.php'>
+                                            <div class='card-body'>
+                                                <h5 class='card-title'> $titulo </h5>
+                                                <p class='card-text'> $descricao </p>
+                                                
+                                            </div>
+                                        </form>
+                                        <div class='card-footer text-muted'>
+                                            2 days ago
+                                        </div>
+                                    </div>
+        
+        
+                                    ");
 
-                        ");
+                                }
+
+                            }
+
+                        
 
                     }else if($tipoNav == "informacoes"){
                         echo (" //exibe projetos

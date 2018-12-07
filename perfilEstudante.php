@@ -86,16 +86,11 @@ impact (fonte)
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php if($tipo == "aluno") echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"'); else  echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"'); ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
                     <div class=" nomeMenu" >
                         <img src="images/icons8.png"  >
                         <?php
-                        $sql2 =  "SELECT * FROM $tipo  WHERE id_ = '$email'";
-
-                        $result2= mysqli_query($conn,$sql2);
-                        $result= $result2->fetch_array();
-
-                        echo $;
+                        echo $nomeDiv[0];
                         ?> 
                     </div>   
                 </div>
@@ -112,9 +107,9 @@ impact (fonte)
                 <div class="col col-lg-2 mt-3">
                     <h4><?php echo("$nome")?></h4>
                     <div class="mt-3">
-                        <?php if ($idPerfiLVer == $id) {
-                            echo ("<button class='btn btn-primary' type='submit'>Editar perfil</button>");
-                        } ?>
+                        <?php if ($idPerfiLVer == $id) { ?>
+                            <button class="btn btn-primary" type="submit" onclick='<?php echo('window.location.href="perfileditar.php"')?>'>  Editar perfil</button>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -225,11 +220,65 @@ impact (fonte)
                             </div>
 
                         ");
-                    }else if ($tipoNav == "historico") {
-                        echo (" //exibe historico
+                    }else if ($tipoNav == "historico") { ?>
+                       
 
-                        ");
-                    }else if ($tipoNav == "formacao") {
+                        <div class="container-fluid">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-6 mt-3">
+                                <?php
+                                //Consulta obter estagios
+                                //Mudar aqui para selecionar a região certa
+                                $sql1 = $sql1="SELECT * from dados_estagio where id_aluno='$id' ";
+                                $result1 = mysqli_query($conn,$sql1);
+            
+                                $cont = 0;
+                                while ($registro1 = $result1->fetch_array() and $cont < 10) {
+            
+                                    //consulta passando id da empresa
+                                    $idd = $registro1['id_estagio'];
+                                    $sql2="SELECT * from estagio where id_estagio='$idd'";
+                                    $result_empr =  mysqli_query($conn,$sql2);
+            
+                                    //como só existe 1 empresa com 1 id
+                                   while( $registro2 = $result_empr->fetch_array()){
+            
+                                   // $nome = $registro2['nome'];
+                                    $area = $registro2['area'];
+                                    $descricao = $registro2['descricao'];
+                                    $titulo = $registro2['titulo'];
+            
+                                   
+            
+            
+                                    echo ("
+                                        <div class='card text-center mt-1 mb-1'>
+                                            <div class='card-header'>
+                                                EMPRESA: 
+                                            </div>
+                                            <form method = 'POST' action = 'candidatar2.php'>
+                                                <div class='card-body'>
+                                                    <h5 class='card-title'> $titulo </h5>
+                                                    <p class='card-text'> $descricao </p>
+                                                    
+                                                </div>
+                                            </form>
+                                            <div class='card-footer text-muted'>
+                                                2 days ago
+                                            </div>
+                                        </div>
+            
+            
+                                        ");}
+                                }
+                                ?>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                    <?php }else if ($tipoNav == "formacao") {
                         echo (" //exibe formacao
 
                         ");
