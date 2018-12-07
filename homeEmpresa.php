@@ -37,8 +37,6 @@ impact (fonte)
 */
 
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -92,72 +90,6 @@ impact (fonte)
                 </div>
             </div> 
         </div>
-        <!--Aparecer no feed da pessoal os ultimos 10 post(De uma área selecionada) ordenados pela data-->
-        <div class="container-fluid">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-6">
-                    <div class="card mt-3">
-                        <div class="card-body">
-                        Sugestão de 10 ultimos estágios da sua região
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-6 mt-3">
-                    <?php
-                    //Consulta obter estagios
-                    //Mudar aqui para selecionar a região certa
-                    $sql1 = $sql1="SELECT * from estagio ";
-                    $result1 = mysqli_query($conn,$sql1);
 
-                    $cont = 0;
-                    while ($registro1 = $result1->fetch_array() and $cont < 10) {
-
-                        //consulta passando id da empresa
-                        $idd = $registro1['id_empresa'];
-                        $sql2="SELECT * from empresa where id_empresa='$idd'";
-                        $result_empr =  mysqli_query($conn,$sql2);
-
-                        //como só existe 1 empresa com 1 id
-                        $registro2 = $result_empr->fetch_array();
-
-                        $nome = $registro2['nome'];
-                        $area = $registro1['area'];
-                        $descricao = $registro1['descricao'];
-                        $titulo = $registro1['titulo'];
-
-                       
-
-
-                        echo ("
-                            <div class='card text-center mt-1 mb-1'>
-                                <div class='card-header'>
-                                    EMPRESA: $nome
-                                </div>
-                                <form method = 'POST' action = 'candidatar2.php'>
-                                    <div class='card-body'>
-                                        <h5 class='card-title'> $titulo </h5>
-                                        <p class='card-text'> $descricao </p>
-                                        <a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
-                                    </div>
-                                </form>
-                                <div class='card-footer text-muted'>
-                                    2 days ago
-                                </div>
-                            </div>
-
-
-                            ");
-                    }
-                    ?>
-
-                </div>
-            </div>
-        </div>
-    
-    </body>
-
+   	</body>
 </html>

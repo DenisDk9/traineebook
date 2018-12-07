@@ -20,25 +20,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql2 =  "SELECT * FROM empresa  WHERE email = '$email' and senha = '$senha'";
 
 	//lembrar que mysql_.. foi descontinuada, agora é mysqli
-	$result = mysqli_query($conn,$sql);
-	$result2= mysqli_query($conn,$sql2);
-	$nome=$result2->fetch_array();
+	$result1 = mysqli_query($conn,$sql);
+	$result2 = mysqli_query($conn,$sql2);
+
+	$nome1 = $result1->fetch_array();
+	$nome2 = $result2->fetch_array();
 	
 
-	if (isset($nome["nome"])) {
+	if (isset($nome1["nome"])) {
+
+		echo("Sucessfull query database2");
+		$_SESSION["user"]=$email;
+
+		$_SESSION["nome"]=$nome1["nome"];
+		$_SESSION["tipo"]="aluno";
+		header("location: home2.php");
+
+		
+	}
+	if(isset($nome2["nome"])){
 		echo("Sucessfull query database");
 		$_SESSION["user"]=$email;
 		
-		$_SESSION["nome"]=$nome["nome"];
+		$_SESSION["nome"]=$nome2["nome"];
 		$_SESSION["tipo"]= "empresa";
-		header("location: home2.php");
-	}else{
-		echo("Sucessfull query database2");
-		$_SESSION["user"]=$email;
-		$nome=$result->fetch_array();
-		$_SESSION["nome"]=$nome["nome"];
-		$_SESSION["tipo"]="aluno";
-		header("location: home2.php");
+		header("location: homeEmpresa.php");
 	}
 
 	//para saber se é sucesso a consulta no banco dados
@@ -46,19 +52,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$row = mysqli_num_rows($result);
 
 	if($row < 1){
-		echo "<script>alert('Email ou senha invalida')</script>";
-		echo "<script>loginfailed()</script>";
+		//echo "<script>alert('')</script>";
+		//echo "<script>loginfailed()</script>";
+		echo('<script>alert("Email ou senha invalida"); window.location.href = "index2.php";</script>') ;
 		exit;
 	}
 
 
 }
 
+/*
 //Um teste se estamos recebendo pelo metodo get
 //Mas aqui não vamos usar esse método
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	echo "METODO GET";
 }
-
+*/
 
 ?>
