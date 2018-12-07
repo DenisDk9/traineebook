@@ -90,6 +90,11 @@ impact (fonte)
                         ?> 
                     </div>   
                 </div>
+                <div class="col col-lg-1 mt-2" style="right: 7%" onclick='<?php  echo ('window.location.href = "index2.php"') ?>'>
+                    <div class=" nomeMenu"  >
+                        <img src="images/leave.png" width="32px" height="32px"  >
+                    </div>   
+                </div>
             </div> 
         </div>
         <!--Aparecer no feed da pessoal os ultimos 10 post(De uma área selecionada) ordenados pela data-->

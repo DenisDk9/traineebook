@@ -88,6 +88,11 @@ impact (fonte)
                         ?> 
                     </div>   
                 </div>
+                <div class="col col-lg-1 mt-2" style="right: 7%" onclick='<?php  echo ('window.location.href = "index2.php"') ?>'>
+                    <div class=" nomeMenu"  >
+                        <img src="images/leave.png" width="32px" height="32px"  >
+                    </div>   
+                </div>
             </div> 
         </div>
         <div class="container-fluid ">
@@ -98,22 +103,22 @@ impact (fonte)
                         Complete abaixo para inserir um novo estágio !
                         </div>
                     </div>
-                    <form>
+                    <form method="POST" action="criaEstagio.php">
                         <div class="form-group mt-2">
                             <label for="formGroupExampleInput">Titulo do estágio</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Título">
+                            <input type="text" class="form-control" name = "titulo" id="formGroupExampleInput" placeholder="Título">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Área</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Área">
+                            <input type="text" class="form-control" name="area" id="formGroupExampleInput2" placeholder="Área">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Requisitos</label>
-                            <textarea class="form-control" name="textMotiv" placeholder="Requisitos" aria-label="With textarea"></textarea>
+                            <textarea class="form-control" name="requisitos" placeholder="Requisitos" aria-label="With textarea"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Descrição</label>
-                            <textarea class="form-control" name="textMotiv" placeholder="Descrição" aria-label="With textarea"></textarea>
+                            <textarea class="form-control" name="descricao" placeholder="Descrição" aria-label="With textarea"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Cadastrar estágio</button>
                     </form>
@@ -147,7 +152,7 @@ impact (fonte)
                                            Aluno: <a href="perfilEstudante.php?nav=historico&idPerfiLVer='.$idaluno.'"'.' class="card-text">'.$nomealuno.'</a><br>
                                            <p class="card-text">Motivação: '.$pendencias2['motivacao'].'</p>
                                            <p class="card-text">Descrição: '.$pendencias['descricao'].'</p>
-                                            <a href="#" class="btn btn-primary">Aceitar estágio</a>
+                                            <a href="aceitaEstagio.php?idX='.$pendencias2['id_dados_estagio'].'" class="btn btn-primary">Aceitar estágio</a>
                                         </div>
                                     </div>
                                 ');

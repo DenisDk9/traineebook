@@ -100,6 +100,11 @@ impact (fonte)
                         ?> 
                     </div>   
                 </div>
+                <div class="col col-lg-1 mt-2" style="right: 7%" onclick='<?php  echo ('window.location.href = "index2.php"') ?>'>
+                    <div class=" nomeMenu"  >
+                        <img src="images/leave.png" width="32px" height="32px"  >
+                    </div>   
+                </div>
             </div> 
         </div>
         <!--Termina o container da barra superior-->
@@ -230,11 +235,11 @@ impact (fonte)
 
                         <div class="container-fluid">
                         <div class="row justify-content-md-center">
-                            <div class="col col-lg-6 mt-3">
+                            <div class="col col-lg-12 mt-3">
                                 <?php
                                 //Consulta obter estagios
                                 //Mudar aqui para selecionar a região certa
-                                $sql1 = $sql1="SELECT * from dados_estagio where id_aluno='$id' ";
+                                $sql1 = $sql1="SELECT * from dados_estagio where id_aluno='$idPerfiLVer' ";
                                 $result1 = mysqli_query($conn,$sql1);
             
                                 $cont = 0;
@@ -247,24 +252,27 @@ impact (fonte)
             
                                     //como só existe 1 empresa com 1 id
                                    while( $registro2 = $result_empr->fetch_array()){
-            
-                                   // $nome = $registro2['nome'];
+                                    $idempresaa= $registro2['id_empresa'];
+                                    $sql7="SELECT nome from empresa where id_empresa='$idempresaa'";
+                                    $result7 =  mysqli_query($conn,$sql7)->fetch_array();
+                                    $nome = $result7['nome'];
                                     $area = $registro2['area'];
                                     $descricao = $registro2['descricao'];
                                     $titulo = $registro2['titulo'];
             
                                    
-            
+                                    $aprovado=$registro1["aprovado"] == 0 ?  "Pendente" : "Aprovado";
             
                                     echo ("
                                         <div class='card text-center mt-1 mb-1'>
                                             <div class='card-header'>
-                                                EMPRESA: 
+                                                EMPRESA: $nome
                                             </div>
                                             <form method = 'POST' action = 'candidatar2.php'>
                                                 <div class='card-body'>
-                                                    <h5 class='card-title'> $titulo </h5>
-                                                    <p class='card-text'> $descricao </p>
+                                                   <h5 class='card-title'>  Titulo: $titulo </h5>
+                                                    <p class='card-text'> Descrição: $descricao </p>
+                                                    <h5 class='card-title'> Status: $aprovado </h5>
                                                     
                                                 </div>
                                             </form>
@@ -283,11 +291,88 @@ impact (fonte)
                     </div>
 
                         
-                    <?php }else if ($tipoNav == "formacao") {
-                        echo (" //exibe formacao
+                    <?php }else if ($tipoNav == "formacao") { ?>
+                        <?php if($id==$idPerfiLVer){ ?>
+                        <div class="container-fluid ">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-12">
+                                    <div class="card mt-3">
+                                        <div class="card-body">
+                                       Inserir formação acadêmica
+                                        </div>
+                                    </div>
+                                    <form action="inserirformacao.php" method="post">
+                                        <div class="form-group mt-2">
+                                            <label for="formGroupExampleInput">Instituição</label>
+                                            <input type="text" class="form-control" name="instituicao" id="formGroupExampleInput" placeholder="Instituição">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Curso</label>
+                                            <input type="text" class="form-control" name="curso" id="formGroupExampleInput2" placeholder="Curso">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Grau</label>
+                                            <input type="text" class="form-control" name="grau" id="formGroupExampleInput2" placeholder="Grau">
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-primary">Inserir formação</button>
+                                    </form>
+                                    <?php } ?>
 
-                        ");
-                    }else if($tipoNav == "projetos"){
+
+                            <div class="container-fluid">
+                                <div class="row justify-content-md-center">
+                                    <div class="col col-lg-12 mt-3">
+
+                                    <?php
+
+                                        $sql1="SELECT * from formacao where id_aluno='$idPerfiLVer' ";
+                                        $result1 = mysqli_query($conn,$sql1);
+
+                                        while ($registro1 = $result1->fetch_array()){
+                                            
+                                            $instituicao=$registro1["instituicao"];
+                                            $curso=$registro1["curso"];
+                                            $grau=$registro1["grau"];
+                                            
+
+                                            echo ("
+                                        <div class='card text-center mt-1 mb-1'>
+                                            <div class='card-header'>
+                                               INSTITUIÇÃO: $instituicao
+                                            </div>
+                                            <form method = 'POST' action = 'candidatar2.php'>
+                                                <div class='card-body'>
+                                                   GRAU: <h5 class='card-title'> $grau </h5>
+                                                  CURSO:  <h5 class='card-title'> $curso </h5>
+                                                    
+                                                </div>
+                                            </form>
+                                           
+                                        </div>
+            
+            
+                                        ");
+
+
+
+                                        }
+
+
+
+                                    ?>
+
+
+
+
+                                </div>
+                                </div>
+                            </div>           
+
+                </div>
+
+
+                    <?php }else if($tipoNav == "projetos"){
                         echo (" //exibe projetos
 
                         ");

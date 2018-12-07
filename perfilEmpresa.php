@@ -26,6 +26,7 @@ else
     $id=$result["id_aluno"];
 
 $estado=$result["estado"];
+$cidade=$result["cidade"];
 //var_dump($id);
 //publicacao
 
@@ -92,6 +93,11 @@ impact (fonte)
                         <?php
                         echo $nomeDiv[0];
                         ?> 
+                    </div>   
+                </div>
+                <div class="col col-lg-1 mt-2" style="right: 7%" onclick='<?php  echo ('window.location.href = "index2.php"') ?>'>
+                    <div class=" nomeMenu"  >
+                        <img src="images/leave.png" width="32px" height="32px"  >
                     </div>   
                 </div>
             </div> 
@@ -190,14 +196,14 @@ impact (fonte)
                             </div>
                             <div class='card w-75'>
                                 <div class='card-body'>
-                                    <h5 class='card-title'>Curso</h5>
-                                    <p class='card-text'> $nome</p>       
+                                    <h5 class='card-title'>Estado</h5>
+                                    <p class='card-text'> $estado</p>       
                                 </div>
                             </div>
                             <div class='card w-75'>
                                 <div class='card-body'>
-                                    <h5 class='card-title'>Biografia</h5>
-                                    <p class='card-text'>$nome </p>       
+                                    <h5 class='card-title'>Cidade</h5>
+                                    <p class='card-text'>$cidade </p>       
                                 </div>
                             </div>
 

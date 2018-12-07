@@ -72,9 +72,27 @@ $area=$_POST["estagio"];
                     </form>
                 </div>
                 <!--Colocar fotinha e mais algo-->
-                <div class="col col-lg-2">
-                  
+                <?php
+                $nomeDiv= explode(" ",$_SESSION['nome']);
+                //echo $nomeDiv[0];
+                ?>
+                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                    <div class=" nomeMenu" >
+                        <img src="images/icons8.png" " >
+                        <?php
+                        echo $nomeDiv[0];
+                        ?> 
+                    </div>   
                 </div>
+                <div class="col col-lg-1 mt-2" style="right: 7%" onclick='<?php  echo ('window.location.href = "index2.php"') ?>'>
+                    <div class=" nomeMenu"  >
+                        <img src="images/leave.png" width="32px" height="32px"  >
+                    </div>   
+                </div>
+            </div> 
+        </div>
+
+        
             </div> 
     	</div>
     	<!--fim da barra fixa menu-->
