@@ -32,16 +32,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		if ($conn->query($sql) === TRUE) {
 			echo "New record created successfully";
+			echo('<script>alert("Cadastro realizado com sucesso"); window.location.href = "index2.php";</script>') ;
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}	
 	}
-	else {
+	if($tipo == "empresa"){
 		$sql = " INSERT INTO empresa (nome,email,senha) 
 		VALUES ('$name','$email','$senha')";
 
 		if ($conn->query($sql) === TRUE) {
 			echo "New record created successfully";
+			echo('<script>alert("Cadastro realizado com sucesso"); window.location.href = "index2.php";</script>') ;
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}	
@@ -57,5 +59,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	echo "METODO GET";
 }
-header("location: index.php");
+
 ?>

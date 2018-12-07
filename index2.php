@@ -72,6 +72,15 @@
                             <label for="exampleInputPassword1">Confirmar senha</label>
                             <input type="password" name="senha-confirmar" class="form-control" id="exampleInputPassword1" placeholder="Digite novamente a senha">
                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" checked type="radio" name="tipo-cadastro" id="inlineRadio1" value="estudante">
+                            <label class="form-check-label" for="inlineRadio1">Estudante</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo-cadastro" id="inlineRadio2" value="empresa">
+                            <label class="form-check-label" for="inlineRadio2">Empresa</label>
+                        </div>
+                        
                         <div class="form-group form-check">
                             <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
