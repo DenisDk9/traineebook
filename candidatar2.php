@@ -12,7 +12,7 @@ $email= $_SESSION["user"];
 //Tem fazer uma verificação aqui pra ver se o cara não ta trolando passando absurdo via get
 $idd = $_REQUEST['idd'];
 
-//echo($idd.": hdyevfgwycuewincin");
+
 
 
 include_once "conexao.php";
