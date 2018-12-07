@@ -90,6 +90,77 @@ impact (fonte)
                 </div>
             </div> 
         </div>
+        <div class="container-fluid ">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-6">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                        Complete abaixo para inserir um novo estágio !
+                        </div>
+                    </div>
+                    <form>
+                        <div class="form-group mt-2">
+                            <label for="formGroupExampleInput">Titulo do estágio</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Título">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Área</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Área">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Requisitos</label>
+                            <textarea class="form-control" name="textMotiv" placeholder="Requisitos" aria-label="With textarea"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Descrição</label>
+                            <textarea class="form-control" name="textMotiv" placeholder="Descrição" aria-label="With textarea"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar estágio</button>
+                    </form>
+
+                </div>
+                <div class="col col-lg-6">
+                    <div class="card mt-3">
+                        <div class="card-body">
+                        Estágios solicitados pendentes !
+                        </div>
+                    </div>
+                    
+                    <?php
+                    $sql2="SELECT * from estagio where id_empresa='$id' and ativo='1'";
+                    $result4=mysqli_query($conn,$sql2);
+                    while($pendencias=$result4->fetch_array()){
+                        $idd=$pendencias["id_estagio"];
+                            $sql="SELECT * from dados_estagio where id_estagio='$idd' and aprovado='0'";
+                            $result5=mysqli_query($conn,$sql);
+                            while($pendencias2=$result5->fetch_array()){ 
+                                $idaluno=$pendencias2["id_aluno"];
+                                $sql3="SELECT nome from aluno where id_aluno='$idaluno'";
+                                $result6=mysqli_query($conn,$sql3)->fetch_array();
+                                $nomealuno=$result6["nome"];
+
+                                echo ('                    
+                                    <div class="card mt-2">
+                                        <h5 class="card-header">Título: '.$pendencias["titulo"].'</h5>
+                                        <div class="card-body">
+
+                                           Aluno: <a href="perfilEstudante.php?nav=historico&idPerfiLVer='.$idaluno.'"'.' class="card-text">'.$nomealuno.'</a><br>
+                                           <p class="card-text">Motivação: '.$pendencias2['motivacao'].'</p>
+                                           <p class="card-text">Descrição: '.$pendencias['descricao'].'</p>
+                                            <a href="#" class="btn btn-primary">Aceitar estágio</a>
+                                        </div>
+                                    </div>
+                                ');
+                            }
+                        }
+                    ?>
+
+
+
+                </div>
+
+            </div>
+        </div>
 
    	</body>
 </html>

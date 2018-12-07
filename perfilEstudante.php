@@ -86,11 +86,16 @@ impact (fonte)
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php if($tipo == "aluno") echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"'); else  echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"'); ?>'>
                     <div class=" nomeMenu" >
                         <img src="images/icons8.png"  >
                         <?php
-                        echo $nomeDiv[0];
+                        $sql2 =  "SELECT * FROM $tipo  WHERE id_ = '$email'";
+
+                        $result2= mysqli_query($conn,$sql2);
+                        $result= $result2->fetch_array();
+
+                        echo $;
                         ?> 
                     </div>   
                 </div>
