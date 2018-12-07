@@ -29,6 +29,11 @@ $estado=$result["estado"];
 //var_dump($id);
 //publicacao
 
+// pegar os dados do perfil que você quer ver
+//idPerfilVer é o id do perfil que você vai ver, podendo ser seu ou não
+$sql3 =  "SELECT * FROM aluno  WHERE id_aluno = '$idPerfiLVer'";
+$result3 = mysqli_query($conn,$sql3);
+$registro3 = $result3->fetch_array();
 /*
 Cor 
 
@@ -65,7 +70,8 @@ impact (fonte)
         <div class="container-fluid backgMenu">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-1">
-                    <a href="home2.php">
+                   <?php if($tipo=="aluno"){ ?> <a href="home2.php">
+                        <?php } else{ ?><a href="homeEmpresa.php"> <?php } ?>
                         <img src="images/logo-traineebook.png"  alt="logo" class="logo-traineebook mt-1" width="40" height="40" >
                     </a>
                 </div>
@@ -86,7 +92,7 @@ impact (fonte)
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php if($tipo == "aluno") echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"'); else  echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"'); ?>'>
                     <div class=" nomeMenu" >
                         <img src="images/icons8.png"  >
                         <?php
@@ -96,7 +102,6 @@ impact (fonte)
                 </div>
             </div> 
         </div>
-
         <!--Termina o container da barra superior-->
         <!--Fazer aqui foto de perfil, capa ou qualquer coisa assim-->
         <div class="container-fluid">
@@ -105,7 +110,7 @@ impact (fonte)
                     <img src="images/perfilteste.png" alt="foto-perfil" class="img-thumbnail" height="150px" width="150px">
                 </div>
                 <div class="col col-lg-2 mt-3">
-                    <h4><?php echo("$nome")?></h4>
+                    <h4><?php echo($registro3['nome'])?></h4>
                     <div class="mt-3">
                         <?php if ($idPerfiLVer == $id) { ?>
                             <button class="btn btn-primary" type="submit" onclick='<?php echo('window.location.href="perfileditar.php"')?>'>  Editar perfil</button>
