@@ -34,6 +34,10 @@ $estado=$result["estado"];
 $sql3 =  "SELECT * FROM aluno  WHERE id_aluno = '$idPerfiLVer'";
 $result3 = mysqli_query($conn,$sql3);
 $registro3 = $result3->fetch_array();
+$nomeestudante=$registro3["nome"];
+$curso=$registro3["curso"];
+$universidade=$registro3["universidade"];
+
 /*
 Cor 
 
@@ -213,19 +217,19 @@ impact (fonte)
                             <div class='card w-75'>
                                 <div class='card-body'>
                                     <h5 class='card-title'>Nome</h5>
-                                    <p class='card-text'>$nome </p>       
+                                    <p class='card-text'>$nomeestudante </p>       
                                 </div>
                             </div>
                             <div class='card w-75'>
                                 <div class='card-body'>
                                     <h5 class='card-title'>Curso</h5>
-                                    <p class='card-text'> $nome</p>       
+                                    <p class='card-text'> $curso</p>       
                                 </div>
                             </div>
                             <div class='card w-75'>
                                 <div class='card-body'>
-                                    <h5 class='card-title'>Biografia</h5>
-                                    <p class='card-text'>$nome </p>       
+                                    <h5 class='card-title'>Universidade</h5>
+                                    <p class='card-text'>$universidade </p>       
                                 </div>
                             </div>
 

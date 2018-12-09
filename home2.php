@@ -133,7 +133,7 @@ impact (fonte)
                         $area = $registro1['area'];
                         $descricao = $registro1['descricao'];
                         $titulo = $registro1['titulo'];
-
+                        $idestagio=$registro1['id_estagio'];
                        
 
 
@@ -146,7 +146,7 @@ impact (fonte)
                                     <div class='card-body'>
                                         <h5 class='card-title'> $titulo </h5>
                                         <p class='card-text'> $descricao </p>
-                                        <a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
+                                        <a href='candidatar2.php?idd=$idestagio' class='btn btn-primary'>Ver mais</a>
                                     </div>
                                 </form>
                                 <div class='card-footer text-muted'>

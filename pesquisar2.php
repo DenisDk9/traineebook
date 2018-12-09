@@ -76,9 +76,9 @@ $area=$_POST["estagio"];
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php if($tipo == "aluno") echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"'); else  echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"'); ?>'>
                     <div class=" nomeMenu" >
-                        <img src="images/icons8.png" " >
+                        <img src="images/icons8.png"  >
                         <?php
                         echo $nomeDiv[0];
                         ?> 
@@ -134,7 +134,7 @@ $area=$_POST["estagio"];
 
 							//como só existe 1 empresa com 1 id
 							$registro2 = $result_empr->fetch_array();
-
+                            $idestagio=$registro["id_estagio"];
 							$nome = $registro2['nome'];
 							$area = $registro['area'];
 							$descricao = $registro['descricao'];
@@ -151,7 +151,7 @@ $area=$_POST["estagio"];
                                         <div class='card-body'>
                                             <h5 class='card-title'> $titulo </h5>
                                             <p class='card-text'> $descricao </p>
-                                            <a href='candidatar2.php?idd=$idd' class='btn btn-primary'>Ver mais</a>
+                                            <a href='candidatar2.php?idd=$idestagio' class='btn btn-primary'>Ver mais</a>
                                         </div>
                                     </form>
                                     <div class='card-footer text-muted'>

@@ -11,6 +11,7 @@ $email= $_SESSION["user"];
 
 //Tem fazer uma verificação aqui pra ver se o cara não ta trolando passando absurdo via get
 $idd = $_REQUEST['idd'];
+//var_dump($idd);
 
 
 
@@ -41,8 +42,8 @@ if(isset($_POST["botao"]) && $_POST["botao"]=="candidatar"){
 
 }
 ///**Fazer verificação nessa etapa aqui
-//consulta para obter oos dados do estagio
-$sql1 ="SELECT * from estagio where id_estagio='$idd'";
+    //consulta para obter oos dados do estagio
+    $sql1 ="SELECT * from estagio where id_estagio='$idd'";
 $result1 = mysqli_query($conn,$sql1);
 
 if (!$result1) {
@@ -115,9 +116,9 @@ if($registro2 = $result2->fetch_array()){
                 $nomeDiv= explode(" ",$_SESSION['nome']);
                 //echo $nomeDiv[0];
                 ?>
-                <div class="col col-lg-2 mt-2" onclick='<?php echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"') ?>'>
+                <div class="col col-lg-2 mt-2" onclick='<?php if($tipo == "aluno") echo ('window.location.href = "perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'"'); else  echo ('window.location.href = "perfilEmpresa.php?nav=resumo&idPerfiLVer='.$id.'"'); ?>'>
                     <div class=" nomeMenu" >
-                        <img src="images/icons8.png" " >
+                        <img src="images/icons8.png"  >
                         <?php
                         echo $nomeDiv[0];
                         ?> 

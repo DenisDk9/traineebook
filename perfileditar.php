@@ -23,7 +23,7 @@ if($tipo=="empresa")
 else
     $id=$result["id_aluno"];
 
-$estado=$result["estado"];
+//$estado=$result["estado"];
 
 
 if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
@@ -51,6 +51,7 @@ if(isset($_POST["botao"]) && $_POST["botao"]=="informacoes"){
         
 
     $resultado= mysqli_query($conn,$sql3);
+    var_dump($resultado);
 
     if($tipo == "aluno")
         header('location: perfilEstudante.php?nav=resumo&idPerfiLVer='.$id.'');
